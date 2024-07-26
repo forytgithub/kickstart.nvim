@@ -941,6 +941,8 @@ vim.keymap.set('n', '<leader>e', '<cmd>Neotree<CR>')
 vim.keymap.set('n', '<F5>', function()
   local file_path = vim.api.nvim_buf_get_name(0)
   local file_name = file_path:match("([^/]+)$")
+  vim.cmd('w')
+  vim.cmd('vsp')
   vim.cmd(string.format("term g++ %s -o %s && ./%s", file_path, file_name:gsub("%.cpp$", ""), file_name:gsub("%.cpp$", "")))
 end)
 -------------------------------------------------------------------------
